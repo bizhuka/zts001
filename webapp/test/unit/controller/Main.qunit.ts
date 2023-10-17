@@ -2,7 +2,7 @@ import Main from "zts001/controller/Main.controller";
 
 QUnit.module("Sample Main controller test");
 
-QUnit.test("The Main controller class has a sayHello method", function (assert) {
+QUnit.test("The Main controller class has a onShowHello method", function (assert) {
 	// as a very basic test example just check the presence of the "sayHello" method
-	assert.strictEqual(typeof Main.prototype.sayHello, "function");
+	assert.strictEqual(typeof Main.prototype.onShowHello, "function");
 });

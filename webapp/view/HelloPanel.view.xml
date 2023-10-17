@@ -1,0 +1,52 @@
+<mvc:View
+    controllerName="zts001.controller.Main"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    core:require="{
+		formatter: 'zts001/model/formatter'
+	}"
+>
+    <!-- text="{i18n>appTitle}" icon="sap-icon://accept" -->
+    <!-- <IllustratedMessage
+		title="{i18n>appTitle}"
+		illustrationType="sapIllus-Connection"
+		id="page"
+		description="{i18n>appDescription}">
+		<additionalContent> -->
+
+    <Panel
+        headerText="{i18n>helloPanelTitle}"
+        class="sapUiResponsiveMargin"
+        width="auto"
+        expandable="{device>/system/phone}"
+		expanded="{= !${device>/system/phone} }"
+        accessibleRole="Region"
+    >
+        <content>
+            <Button
+                id="helloButton"
+                text="{i18n>openDialogButtonText}"
+                icon="sap-icon://world"
+                press=".onOpenDialog"
+                class="sapUiSmallMarginEnd sapUiVisibleOnlyOnDesktop"/>
+
+            <Button
+                text="{i18n>showHelloButtonText}"
+                press=".onShowHello"
+                class="myCustomButton"
+            />
+            <Input
+                value="{JSData>/recipient/name}"
+                valueLiveUpdate="true"
+                width="30rem"/>
+
+            <!-- <Text text="Hello {JSData>/recipient/name}" class="sapUiSmallMargin"/> -->
+            <FormattedText
+                htmlText="Hello {JSData>/recipient/name}"
+                class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"
+            />
+        </content>
+    </Panel>
+</mvc:View>

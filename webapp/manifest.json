@@ -9,6 +9,15 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
+		},
+		"dataSources": {
+			"invoiceRemote": {
+				"uri": "https://services.odata.org/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
 		}
 	},
 
@@ -27,7 +36,7 @@
 			"viewName": "zts001.view.App",
 			"type": "XML",
 			"async": true,
-			"id": "app"
+			"id": "appTs"
 		},
 
 		"dependencies": {
@@ -49,9 +58,23 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "zts001.i18n.i18n"
+					"bundleName": "zts001.i18n.i18n",
+					"supportedLocales": [""]
 				}
+			},
+			"invoice": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "Invoices.json",
+				"dataSource_no_access": "invoiceRemote"
 			}
+		},
+		
+		"resources": {
+		  "css": [
+			{
+			  "uri": "css/style.css"
+			}
+		  ]
 		},
 
 		"routing": {
@@ -59,7 +82,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"viewPath": "zts001.view",
-				"controlId": "app",
+				"controlId": "appTs",
 				"controlAggregation": "pages",
 				"async": true
 			},
@@ -68,12 +91,21 @@
 					"pattern": "",
 					"name": "main",
 					"target": "main"
+				},
+				{
+				  "pattern": "detail/{invoicePath}",
+				  "name": "detail",
+				  "target": "detail"
 				}
 			],
 			"targets": {
 				"main": {
 					"viewId": "main",
 					"viewName": "Main"
+				},
+				"detail": {
+				  "viewId": "detail",
+				  "viewName": "Detail"
 				}
 			}
 		}

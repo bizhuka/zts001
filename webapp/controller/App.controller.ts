@@ -8,4 +8,8 @@ export default class App extends BaseController {
 		// apply content density mode to root view
 		this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 	}
+
+	public onOpenDialog(): void {
+		void this.getOwnerComponent().openHelloDialog(this);
+	}
 }
